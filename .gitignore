@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+*.xccheckout
+*.moved-aside
+DerivedData/
+*.hmap
+*.ipa
+*.xg
+*.xcuserstate
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Backup files
+*.bak
+*.tmp
+*~
+
+# Generated Xcode Project (SPM-based)
+*.xcodeproj
+*.xcworkspace
