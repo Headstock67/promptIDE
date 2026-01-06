@@ -10,7 +10,7 @@ let package = Package(
     products: [
         .library(name: "PromptIDE_Domain", targets: ["PromptIDE_Domain"]),
         .library(name: "PromptIDE_Data", targets: ["PromptIDE_Data"]),
-        .library(name: "PromptIDE_Core", targets: ["PromptIDE_Core"]),
+        .library(name: "PromptIDE_App", targets: ["PromptIDE_App"]),
     ],
     targets: [
         // MARK: - Domain Layer
@@ -44,7 +44,7 @@ let package = Package(
         // MARK: - App Layer (Library)
         // Networking, DI Container, Entry Point Logic. Depends on Domain and Data.
         .target(
-            name: "PromptIDE_Core",
+            name: "PromptIDE_App",
             dependencies: ["PromptIDE_Domain", "PromptIDE_Data"],
             swiftSettings: [
                 .enableExperimentalFeature("StrictConcurrency")
@@ -52,10 +52,7 @@ let package = Package(
         ),
         .testTarget(
             name: "PromptIDE_AppTests",
-            dependencies: ["PromptIDE_Core", "PromptIDE_Domain", "PromptIDE_Data"],
-            swiftSettings: [
-            .enableExperimentalFeature("StrictConcurrency")
-        ]
+            dependencies: ["PromptIDE_App", "PromptIDE_Domain", "PromptIDE_Data"],
         ),
     ]
 )
