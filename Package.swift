@@ -52,7 +52,10 @@ let package = Package(
         ),
         .testTarget(
             name: "PromptIDE_AppTests",
-            dependencies: ["PromptIDE_App", "PromptIDE_Domain", "PromptIDE_Data"]
+            dependencies: ["PromptIDE_Core", "PromptIDE_Domain", "PromptIDE_Data"],
+            swiftSettings: [
+            .enableExperimentalFeature("StrictConcurrency")
+        ]
         ),
     ]
 )
