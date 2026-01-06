@@ -7,14 +7,13 @@ import SwiftUI
 import PromptIDE_Domain
 import PromptIDE_Data
 
-@main
-struct PromptIDEApp: App {
+public struct PromptIDEApp: App {
     // The single source of truth for dependencies.
     @StateObject private var container: AppContainer
     // The single source of truth for navigation.
     @StateObject private var navManager: NavigationManager
     
-    init() {
+    public init() {
         // Initialize the composition root
         // In the future, we might decide 'inMemory' based on launch arguments for UI Tests
         let container = AppContainer()
@@ -24,10 +23,11 @@ struct PromptIDEApp: App {
         _navManager = StateObject(wrappedValue: navManager)
     }
     
-    var body: some Scene {
+    public var body: some Scene {
         WindowGroup {
             AppRoot()
                 .environmentObject(navManager)
+                .environmentObject(container)
         }
     }
 }

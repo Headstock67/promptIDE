@@ -37,17 +37,10 @@ public struct AppSidebarShell: View {
             
         } detail: {
             // Detail Area
-            if let selectedProject = navManager.selectedProjectID {
-                VStack {
-                    StandardHeader(title: "Project Detail", subtitle: selectedProject.uuidString)
-                    EmptyStateView(
-                        icon: "doc.text",
-                        message: "Select a prompt to edit",
-                        actionTitle: "New Prompt",
-                        action: {}
-                    )
-                }
-                .padding()
+            if let _ = navManager.selectedProjectID {
+                // In a real app, we'd pass the Project entity or ID to the EditorView
+                // which would then fetch the data. For 1.2b, we just show the transient editor.
+                EditorView()
             } else {
                 EmptyStateView(
                     icon: "sidebar.left",

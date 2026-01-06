@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "PromptIDE",
+    name: "PromptIDEKit",
     platforms: [
         .iOS(.v17),
         .macOS(.v14)
@@ -10,7 +10,7 @@ let package = Package(
     products: [
         .library(name: "PromptIDE_Domain", targets: ["PromptIDE_Domain"]),
         .library(name: "PromptIDE_Data", targets: ["PromptIDE_Data"]),
-        .library(name: "PromptIDE_App", targets: ["PromptIDE_App"]),
+        .library(name: "PromptIDE_Core", targets: ["PromptIDE_Core"]),
     ],
     targets: [
         // MARK: - Domain Layer
@@ -41,10 +41,10 @@ let package = Package(
             dependencies: ["PromptIDE_Data", "PromptIDE_Domain"]
         ),
 
-        // MARK: - App Layer (Composition Root)
-        // Networking, DI Container, Entry Point. Depends on Domain and Data.
+        // MARK: - App Layer (Library)
+        // Networking, DI Container, Entry Point Logic. Depends on Domain and Data.
         .target(
-            name: "PromptIDE_App",
+            name: "PromptIDE_Core",
             dependencies: ["PromptIDE_Domain", "PromptIDE_Data"],
             swiftSettings: [
                 .enableExperimentalFeature("StrictConcurrency")
